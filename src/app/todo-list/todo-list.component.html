@@ -1,14 +1,14 @@
+<h1>Todo List</h1>
 <mat-list role="menu">
-    @for (item of todoList; track item.title; let index = $index, odd = $odd) {
-    <mat-list-item>
-        {{index}} | <app-todo-item [item]="
-                {
-                    title: item.title, 
-                    icon: item.icon, 
-                    description: item.description, 
-                    completed: item.completed, 
-                    index
-                }" (deleteItemEvent)="removeItem($event)" />
-    </mat-list-item>
-    }
+  @for (item of todoList; track item.title; let index = $index, odd = $odd) {
+  <mat-list-item>{{ index }} |
+    <app-todo-item [item]="{
+        title: item.title,
+        icon: item.icon,
+        description: item.description,
+        completed: item.completed,
+        index
+      }" (deleteItemEvent)="removeItem($event)" />
+  </mat-list-item>
+  }
 </mat-list>

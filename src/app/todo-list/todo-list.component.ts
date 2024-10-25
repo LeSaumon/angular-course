@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { TodoItem } from '../../shared/types/TodoItem';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { TodoItem } from '../../shared/types/TodoItem';
 import { UpperCasePipe } from '@angular/common';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
+
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [MatCardModule, MatListModule, UpperCasePipe, TodoItemComponent],
+  imports: [MatListModule, MatButtonModule, UpperCasePipe, TodoItemComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss'
 })
