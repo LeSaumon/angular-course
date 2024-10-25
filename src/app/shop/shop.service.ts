@@ -1,26 +1,19 @@
-import { Injectable } from '@angular/core';
-import { ProductItem } from '../../shared/types/ProductItem';
+import { Injectable, signal, WritableSignal } from '@angular/core';
+import { Product } from '../../shared/types/Product';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-  productList: ProductItem[] = [
-    {
-      title: "Wonderful",
-      price: 200,
-      description: "I am a wonderful product, trully",
-      image: "https://picsum.photos/id/122/400/200"
-    },
+  protected products: WritableSignal<Product[]> = signal([])
 
-  ]
+  constructor(readonly http: HttpClient) {
+  }
 
-  getItems(): ProductItem[] {
-    return this.productList
+  fetchProduct(): Observable<any> {
+    return this.http.get<any>("https://fakestoreapi.com/products")
   }
-  getProduct(id: number): ProductItem | undefined {
-    if (id + 1 > this.productList.length) return;
-    return this.productList[id]
-  }
-  constructor() { }
+
 }
